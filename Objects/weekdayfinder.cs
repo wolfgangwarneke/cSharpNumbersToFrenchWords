@@ -7,7 +7,7 @@ namespace FrenchNumberToWord
   {
     private string[] _numbers0To19 = new string[] { "zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"};
     private string[] _doubleDigits = new string[] { "null", "void", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante", "quatre-vingt", "quatre-vingt"};
-    private string[] _largeNumbers = new string[] {"", "mille ", "million ", "milliard ", "billion ", "billiard ", "trillion "};
+    private string[] _largeNumbers = new string[] {"", "mille", "million", "milliard", "billion", "billiard", "trillion"};
     public string Translate(int numberToTranslate)
     {
       bool addDash = false;
@@ -39,6 +39,7 @@ namespace FrenchNumberToWord
         }
         stringNumberToTranslate = toBeRemainder;
         int workingNumberToTranslate = int.Parse(toBeWorkingNumber);
+        if (workingNumberToTranslate > 1 && largeNamberIndex > 1) addS = true;
         if (workingNumberToTranslate != 0 || output == "")
         {
           if (workingNumberToTranslate >= 100)
@@ -80,6 +81,8 @@ namespace FrenchNumberToWord
             output += _numbers0To19[workingNumberToTranslate];
           }
           output += " " + _largeNumbers[largeNamberIndex];
+          if (addS) output += "s ";
+          else output += " ";
         }
         if (largeNamberIndex > 1 && int.Parse(stringNumberToTranslate) > 0)
         {
