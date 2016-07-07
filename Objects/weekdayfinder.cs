@@ -7,61 +7,97 @@ namespace FrenchNumberToWord
   {
     private string[] _numbers0To19 = new string[] { "zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"};
     private string[] _doubleDigits = new string[] { "null", "void", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante", "quatre-vingt", "quatre-vingt"};
+    private string[] _largeNumbers = new string[] {"", "mille ", "million ", "milliard ", "billion ", "billiard ", "trillion "};
     public string Translate(int numberToTranslate)
     {
       bool addDash = false;
       string output = "";
-      if (numberToTranslate >= 1000)
+      // if (numberToTranslate >= 1000)
+      // {
+      //   int thousandsNumber = numberToTranslate / 1000;
+      //   if (thousandsNumber > 1)
+      //   {
+      //     output += _numbers0To19[thousandsNumber] + " ";
+      //   }
+      //   output += "mille";
+      //   numberToTranslate = numberToTranslate % 1000;
+      //   if (numberToTranslate != 0) output += " ";
+      // }
+      string stringNumberToTranslate = numberToTranslate.ToString();
+      int numberLength = stringNumberToTranslate.Length;
+      int largeNamberIndex = (numberLength - 1) / 3;
+      while (stringNumberToTranslate.Length % 3 != 0)
       {
-        int thousandsNumber = numberToTranslate / 1000;
-        if (thousandsNumber > 1)
-        {
-          output += _numbers0To19[thousandsNumber] + " ";
-        }
-        output += "mille";
-        }
-        numberToTranslate = numberToTranslate % 1000;
-        if (numberToTranslate != 0) output += " ";
+          stringNumberToTranslate = "0" + stringNumberToTranslate;
       }
-      if (numberToTranslate >= 100)
+
+      while (largeNamberIndex >= 0)
       {
-        int hundredsNumber = numberToTranslate / 100;
-        if (hundredsNumber > 1)
+        string toBeWorkingNumber = "";
+        string toBeRemainder = "";
+        for(int index = 0; index < stringNumberToTranslate.Length; index ++)
         {
-          output += _numbers0To19[hundredsNumber];
-          output += " cents";
+          if (index < 3)
+          {
+            toBeWorkingNumber += stringNumberToTranslate[index];
+          }
+          else{
+            toBeRemainder += stringNumberToTranslate[index];
+          }
         }
-        else
+        stringNumberToTranslate = toBeRemainder;
+        int workingNumberToTranslate = int.Parse(toBeWorkingNumber);
+        if (workingNumberToTranslate != 0 || output == "")
         {
-          output += "cent";
+          if (workingNumberToTranslate >= 100)
+          {
+            int hundredsNumber = workingNumberToTranslate / 100;
+            if (hundredsNumber > 1)
+            {
+              output += _numbers0To19[hundredsNumber];
+              output += " cents";
+            }
+            else
+            {
+              output += "cent";
+            }
+            workingNumberToTranslate = workingNumberToTranslate % 100;
+            if (workingNumberToTranslate != 0) output += " ";
+          }
+          if (workingNumberToTranslate > 19)
+          {
+            addDash = true;
+            int tensNumber = workingNumberToTranslate / 10;
+            output += _doubleDigits[tensNumber];
+            if (tensNumber == 7 || tensNumber == 9)
+            {
+              workingNumberToTranslate = (workingNumberToTranslate % 10) + 10;
+            }
+            else
+            {
+              workingNumberToTranslate = workingNumberToTranslate % 10;
+            }
+          }
+          if (workingNumberToTranslate > 0 || output == "")
+          {
+            if (output != "" && addDash)
+            {
+              if (workingNumberToTranslate == 1) output += " et ";
+              else output += "-";
+            }
+            output += _numbers0To19[workingNumberToTranslate];
+          }
+          output += " " + _largeNumbers[largeNamberIndex];
         }
-        numberToTranslate = numberToTranslate % 100;
-        if (numberToTranslate != 0) output += " ";
+        if (largeNamberIndex > 1 && int.Parse(stringNumberToTranslate) > 0)
+        {
+          output += "de ";
+        }
+        largeNamberIndex --;
       }
-      if (numberToTranslate > 19)
-      {
-        addDash = true;
-        int tensNumber = numberToTranslate / 10;
-        output += _doubleDigits[tensNumber];
-        if (tensNumber == 7 || tensNumber == 9)
-        {
-          numberToTranslate = (numberToTranslate % 10) + 10;
-        }
-        else
-        {
-          numberToTranslate = numberToTranslate % 10;
-        }
-      }
-      if (numberToTranslate > 0 || output == "")
-      {
-        if (output != "" && addDash)
-        {
-          if (numberToTranslate == 1) output += " et ";
-          else output += "-";
-        }
-        output += _numbers0To19[numberToTranslate];
-      }
-      return output;
+
+      return output.Trim();
+
     }
   }
 }

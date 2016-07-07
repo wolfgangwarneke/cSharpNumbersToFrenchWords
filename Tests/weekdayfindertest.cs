@@ -135,5 +135,16 @@ namespace FrenchNumberToWord
       //Assert
       Assert.Equal(expectedResult, result);
     }
+    [Fact]
+    public void Translate_For1000000_unMillion()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "un million";
+      //Act
+      string result = testTranslator.Translate(1000000);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
   }
 }
