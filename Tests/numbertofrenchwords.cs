@@ -1,5 +1,5 @@
 // using Xunit;
-// namespace FrenchNumberToWord
+// namespace FrenchNumberToWord.Objects
 // {
 //   public class NumberTranslatorTest
 //   {

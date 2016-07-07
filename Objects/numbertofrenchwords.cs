@@ -28,6 +28,11 @@ namespace FrenchNumberToWord.Objects
       return _instances;
     }
 
+    public static void ClearAll()
+    {
+      _instances.Clear();
+    }
+
     public string Translate(int numberToTranslate)
     {
       bool addDash = false;
@@ -45,6 +50,7 @@ namespace FrenchNumberToWord.Objects
       while (largeNamberIndex >= 0)
       {
         addS = false;
+        addDash = false;
         string toBeWorkingNumber = "";
         string toBeRemainder = "";
         for(int index = 0; index < stringNumberToTranslate.Length; index ++)

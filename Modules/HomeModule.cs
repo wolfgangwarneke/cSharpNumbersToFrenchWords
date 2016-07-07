@@ -14,6 +14,7 @@ namespace FrenchNumberToWord
         return View["index.cshtml"];
       };
       Post["/"] = _ => {
+        NumberTranslator.ClearAll();
         int howManyMoreTimes = Request.Form["amount"];
         Random random = new Random();
         for (int i = 0; i < howManyMoreTimes; i ++)
