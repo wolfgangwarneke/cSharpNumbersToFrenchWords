@@ -12,8 +12,16 @@ namespace FrenchNumberToWord
       string output = "";
       if (numberToTranslate > 19)
       {
-        output += _doubleDigits[numberToTranslate/10];
-        numberToTranslate = numberToTranslate % 10;
+        int tensNumber = numberToTranslate / 10;
+        output += _doubleDigits[tensNumber];
+        if (tensNumber == 7 || tensNumber == 9)
+        {
+          numberToTranslate = (numberToTranslate % 10) + 10;
+        }
+        else
+        {
+          numberToTranslate = numberToTranslate % 10;
+        }
       }
       if (numberToTranslate > 0 || output == "")
       {

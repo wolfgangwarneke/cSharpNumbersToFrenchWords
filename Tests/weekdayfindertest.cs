@@ -69,6 +69,7 @@ namespace FrenchNumberToWord
       //Assert
       Assert.Equal(expectedResult, result);
     }
+    [Fact]
     public void Translate_For78_soixanteDixHuit()
     {
       //Arrange
@@ -76,6 +77,17 @@ namespace FrenchNumberToWord
       string expectedResult = "soixante-dix-huit";
       //Act
       string result = testTranslator.Translate(78);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
+    [Fact]
+    public void Translate_For91_quatreVingtOnze()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "quatre-vingt-onze";
+      //Act
+      string result = testTranslator.Translate(91);
       //Assert
       Assert.Equal(expectedResult, result);
     }
