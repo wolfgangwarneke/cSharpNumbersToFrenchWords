@@ -69,5 +69,15 @@ namespace FrenchNumberToWord
       //Assert
       Assert.Equal(expectedResult, result);
     }
+    public void Translate_For78_soixanteDixHuit()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "soixante-dix-huit";
+      //Act
+      string result = testTranslator.Translate(78);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
   }
 }
