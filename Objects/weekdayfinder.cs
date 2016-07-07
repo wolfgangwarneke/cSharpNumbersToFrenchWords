@@ -11,6 +11,18 @@ namespace FrenchNumberToWord
     {
       bool addDash = false;
       string output = "";
+      if (numberToTranslate >= 1000)
+      {
+        int thousandsNumber = numberToTranslate / 1000;
+        if (thousandsNumber > 1)
+        {
+          output += _numbers0To19[thousandsNumber] + " ";
+        }
+        output += "mille";
+        }
+        numberToTranslate = numberToTranslate % 1000;
+        if (numberToTranslate != 0) output += " ";
+      }
       if (numberToTranslate >= 100)
       {
         int hundredsNumber = numberToTranslate / 100;

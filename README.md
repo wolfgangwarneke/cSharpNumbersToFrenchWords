@@ -40,7 +40,7 @@
 
 ### Return Word For Triple Digit Numbers Above 199
 #### Input: 332
-#### Output: trois cent trente-deux
+#### Output: trois cents trente-deux
 
 ### Return Word For Quadruple Digit Numbers
 #### Input: 5001

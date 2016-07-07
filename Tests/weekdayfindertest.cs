@@ -124,5 +124,16 @@ namespace FrenchNumberToWord
       //Assert
       Assert.Equal(expectedResult, result);
     }
+    [Fact]
+    public void Translate_For5001_cinqMilleUn()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "cinq mille un";
+      //Act
+      string result = testTranslator.Translate(5001);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
   }
 }
