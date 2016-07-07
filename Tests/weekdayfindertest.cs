@@ -102,5 +102,27 @@ namespace FrenchNumberToWord
       //Assert
       Assert.Equal(expectedResult, result);
     }
+    [Fact]
+    public void Translate_For110_centDix()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "cent dix";
+      //Act
+      string result = testTranslator.Translate(110);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
+    [Fact]
+    public void Translate_For332_troisCentsTrenteDeux()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "trois cents trente-deux";
+      //Act
+      string result = testTranslator.Translate(332);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
   }
 }

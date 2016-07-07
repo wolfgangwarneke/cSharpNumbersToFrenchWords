@@ -9,6 +9,7 @@ namespace FrenchNumberToWord
     private string[] _doubleDigits = new string[] { "null", "void", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante", "quatre-vingt", "quatre-vingt"};
     public string Translate(int numberToTranslate)
     {
+      bool addDash = false;
       string output = "";
       if (numberToTranslate >= 100)
       {
@@ -23,9 +24,11 @@ namespace FrenchNumberToWord
           output += "cent";
         }
         numberToTranslate = numberToTranslate % 100;
+        if (numberToTranslate != 0) output += " ";
       }
       if (numberToTranslate > 19)
       {
+        addDash = true;
         int tensNumber = numberToTranslate / 10;
         output += _doubleDigits[tensNumber];
         if (tensNumber == 7 || tensNumber == 9)
@@ -39,7 +42,7 @@ namespace FrenchNumberToWord
       }
       if (numberToTranslate > 0 || output == "")
       {
-        if (output != "")
+        if (output != "" && addDash)
         {
           if (numberToTranslate == 1) output += " et ";
           else output += "-";
