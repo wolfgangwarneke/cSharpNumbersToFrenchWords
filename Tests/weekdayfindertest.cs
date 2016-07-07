@@ -142,7 +142,7 @@ namespace FrenchNumberToWord
       NumberTranslator testTranslator = new NumberTranslator();
       string expectedResult = "un million";
       //Act
-      string result = testTranslator.Translate(1000000);
+      string result = testTranslator.Translate(1000);
       //Assert
       Assert.Equal(expectedResult, result);
     }

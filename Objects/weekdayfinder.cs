@@ -11,21 +11,12 @@ namespace FrenchNumberToWord
     public string Translate(int numberToTranslate)
     {
       bool addDash = false;
+      bool addS = false;
       string output = "";
-      // if (numberToTranslate >= 1000)
-      // {
-      //   int thousandsNumber = numberToTranslate / 1000;
-      //   if (thousandsNumber > 1)
-      //   {
-      //     output += _numbers0To19[thousandsNumber] + " ";
-      //   }
-      //   output += "mille";
-      //   numberToTranslate = numberToTranslate % 1000;
-      //   if (numberToTranslate != 0) output += " ";
-      // }
       string stringNumberToTranslate = numberToTranslate.ToString();
       int numberLength = stringNumberToTranslate.Length;
       int largeNamberIndex = (numberLength - 1) / 3;
+
       while (stringNumberToTranslate.Length % 3 != 0)
       {
           stringNumberToTranslate = "0" + stringNumberToTranslate;
@@ -33,6 +24,7 @@ namespace FrenchNumberToWord
 
       while (largeNamberIndex >= 0)
       {
+        addS = false;
         string toBeWorkingNumber = "";
         string toBeRemainder = "";
         for(int index = 0; index < stringNumberToTranslate.Length; index ++)
