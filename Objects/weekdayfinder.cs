@@ -10,6 +10,20 @@ namespace FrenchNumberToWord
     public string Translate(int numberToTranslate)
     {
       string output = "";
+      if (numberToTranslate >= 100)
+      {
+        int hundredsNumber = numberToTranslate / 100;
+        if (hundredsNumber > 1)
+        {
+          output += _numbers0To19[hundredsNumber];
+          output += " cents";
+        }
+        else
+        {
+          output += "cent";
+        }
+        numberToTranslate = numberToTranslate % 100;
+      }
       if (numberToTranslate > 19)
       {
         int tensNumber = numberToTranslate / 10;

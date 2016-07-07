@@ -91,5 +91,16 @@ namespace FrenchNumberToWord
       //Assert
       Assert.Equal(expectedResult, result);
     }
+    [Fact]
+    public void Translate_For500_cinqCents()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "cinq cents";
+      //Act
+      string result = testTranslator.Translate(500);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
   }
 }
