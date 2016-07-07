@@ -1,0 +1,19 @@
+@if (Model == null) {
+ <h2>Bienvenue!</h2>
+}
+else {
+  <ul>
+  @foreach (var number in Model) {
+    <li>
+    <strong> @number.GetNumber() </strong> c'est <span style="font-family: sans-serif"><em> @number.Translate(number.GetNumber()) </em></span>
+    </li>
+  }
+  </ul>
+}
+<form action="/" method="post">
+  <label for="amount">Bubblegum, bubblegum, in a dish. How many numbers do you wish?</label>
+  <input name="amount" type="number" min="0" max="5000" required>
+  <label for="max">Max?</label>
+  <input name="max" type="number" min="0" max="999999999" required>
+  <button type="submit">Allons-y!</button>
+</form>

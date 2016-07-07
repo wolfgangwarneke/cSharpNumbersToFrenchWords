@@ -1,13 +1,33 @@
 using System;
 using System.Collections.Generic;
 
-namespace FrenchNumberToWord
+namespace FrenchNumberToWord.Objects
 {
   public class NumberTranslator
   {
-    private string[] _numbers0To19 = new string[] { "zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"};
-    private string[] _doubleDigits = new string[] { "null", "void", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante", "quatre-vingt", "quatre-vingt"};
-    private string[] _largeNumbers = new string[] {"", "mille", "million", "milliard", "billion", "billiard", "trillion"};
+    private static string[] _numbers0To19 = new string[] { "zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"};
+    private static string[] _doubleDigits = new string[] { "null", "void", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante", "quatre-vingt", "quatre-vingt"};
+    private static string[] _largeNumbers = new string[] {"", "mille", "million", "milliard", "billion", "billiard", "trillion"};
+    private int _id;
+    private int _number;
+    private static List<NumberTranslator> _instances = new List<NumberTranslator> {};
+
+    public NumberTranslator(int userInput) {
+      _instances.Add(this);
+      _id = _instances.Count;
+      _number = userInput;
+    }
+
+    public int GetNumber()
+    {
+      return _number;
+    }
+
+    public static List<NumberTranslator> GetAll()
+    {
+      return _instances;
+    }
+
     public string Translate(int numberToTranslate)
     {
       bool addDash = false;
