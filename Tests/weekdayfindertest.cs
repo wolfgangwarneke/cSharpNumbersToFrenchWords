@@ -36,5 +36,38 @@ namespace FrenchNumberToWord
       //Assert
       Assert.Equal(expectedResult, result);
     }
+    [Fact]
+    public void Translate_For50_cinquante()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "cinquante";
+      //Act
+      string result = testTranslator.Translate(50);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
+    [Fact]
+    public void Translate_For54_cinquanteQuatre()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "cinquante-quatre";
+      //Act
+      string result = testTranslator.Translate(54);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
+    [Fact]
+    public void Translate_For41_quaranteEtUn()
+    {
+      //Arrange
+      NumberTranslator testTranslator = new NumberTranslator();
+      string expectedResult = "quarante et un";
+      //Act
+      string result = testTranslator.Translate(41);
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
   }
 }

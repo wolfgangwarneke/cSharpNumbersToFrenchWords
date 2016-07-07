@@ -12,10 +12,15 @@
 #### Input: 18
 #### Output: dix-huit
 
+### Return Word For Double Digit Numbers Under 100 Which Are Divisible By 10
+#### Input: 50
+#### Output: cinquante
+
 ### Return Word For Double Digit Number Up to 59
 #### Input: 54
 #### Output: cinquante-quatre
 #### Input: 41
+#### Output: quarante et un
 
 ### Return Word For Double Digit Number Up to 79
 #### Input: 78
