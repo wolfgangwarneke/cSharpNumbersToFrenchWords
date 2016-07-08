@@ -10,13 +10,14 @@
       <h2>Bienvenue!</h2>
     }
     else {
-      <ul>
+      <div id="container">
         @foreach (var number in Model) {
-          <li>
-            <strong> @number.GetNumber() </strong> avec des mots est <span style="font-family: sans-serif"><em> @number.Translate(number.GetNumber()) </em></span>
-          </li>
+          <div class="answers hidden">
+            <div> @number.GetNumber() </div> <div class="test hiddentest" style="font-family: sans-serif"> @number.Translate(number.GetNumber()) </div>
+          </div>
+
         }
-      </ul>
+      </div>
     }
     <form action="/" method="post">
       <label for="amount">Bubblegum, bubblegum, in a dish. How many numbers do you wish?</label>
@@ -26,5 +27,7 @@
       <button type="submit">Allons-y!</button>
     </form>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="/Content/js/scripts.js"></script>
   </body>
 </html>
